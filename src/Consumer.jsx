@@ -3,12 +3,11 @@ import Map from "./google/Map";
 import Marker from "./google/Marker";
 import MarkerClusterer from "./google/MarkerClusterer";
 import Popup from "./google/Popup";
-import createPopupClass from "./utils/customOverlay";
 import TransitLayer from "./google/TransitLayer";
 import LeftLayer from "./google/LeftLayer";
 import getPlaces from "./utils/getPlaces";
 import "./styles.css";
-import home1 from './image/home1.jpg'
+import home2 from "./image/home2.jpg";
 const base = { lat: 43.653226, lng: -79.3831484 };
 
 export default function Consumer() {
@@ -30,13 +29,54 @@ export default function Consumer() {
       >
         <LeftLayer />
         <TransitLayer enabled={transitLayerEnabled} />
-        
+
         <Popup position={{ lat: base.lat - 0.01, lng: base.lng - 0.01 }}>
           <div onClick={() => setClickCnt(clickCnt + 1)}>
             Custom React Element {clickCnt}
           </div>
+          <div>
+            <div className="left-layer-item">
+              <div className="left-layer-item-img">
+                <img src={home2} alt="" />
+                <div className="left-layer-item-des">
+                  <h3>$5,000</h3>
+                  <p>3727 RIVA AVE, Innisfil, Ontario </p>
+                </div>
+              </div>
+              <div className="left-layer-item-info">
+                <p>N4590690</p>
+                <p>RIGHT AT HOME REALTY INC., Brokerage</p>
+              </div>
+            </div>
+            <div className="left-layer-item">
+              <div className="left-layer-item-img">
+                <img src={home2} alt="" />
+                <div className="left-layer-item-des">
+                  <h3>$5,000</h3>
+                  <p>3727 RIVA AVE, Innisfil, Ontario </p>
+                </div>
+              </div>
+              <div className="left-layer-item-info">
+                <p>N4590690</p>
+                <p>RIGHT AT HOME REALTY INC., Brokerage</p>
+              </div>
+            </div>
+            <div className="left-layer-item">
+              <div className="left-layer-item-img">
+                <img src={home2} alt="" />
+                <div className="left-layer-item-des">
+                  <h3>$5,000</h3>
+                  <p>3727 RIVA AVE, Innisfil, Ontario </p>
+                </div>
+              </div>
+              <div className="left-layer-item-info">
+                <p>N4590690</p>
+                <p>RIGHT AT HOME REALTY INC., Brokerage</p>
+              </div>
+            </div>
+          </div>
         </Popup>
-      
+
         <MarkerClusterer>
           {places.map((m, index) => (
             <Marker
@@ -45,7 +85,9 @@ export default function Consumer() {
               title={"marker id: " + m.id}
               position={{ lat: m.lat, lng: m.lng }}
               events={{
-                onMouseover: () => { console.log(m.lat);},
+                onMouseover: () => {
+                  console.log(m.lat);
+                },
                 onMouseout: () => {}
               }}
             />
